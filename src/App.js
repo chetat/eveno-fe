@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import Navbar from './components/Navbar'
+import Navbar from './containers/Navbar'
 
 import { Router } from 'react-router-dom';
 
@@ -17,6 +17,7 @@ export default class App extends Component {
             <Provider store={store}>
                 <Router history={browserHistory}>
                     <PersistGate persistor={persistor}>
+                        <Navbar />
                         <Routes />
                     </PersistGate>
                 </Router>
