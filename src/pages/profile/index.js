@@ -3,9 +3,9 @@ import React from 'react';
 
 const Profile = () => {
     return (
-        <diV>
+        <div>
             <h2>Profile Page</h2>
-        </diV>
+        </div>
     )
 };
 
