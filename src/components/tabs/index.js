@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import Tabs from '@material-ui/core/Tabs';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Tab from '@material-ui/core/Tab';
-import styles from './styles'
-
-
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
+
   return (
     <Typography
       component="div"
@@ -30,31 +29,39 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
+const a11yProps = (index) => {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
 
 const CategoriesTabs = () => {
-  const classes = styles();
-  const [value, setValue] = useState(0);
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
-    console.log(event.target)
     setValue(newValue);
   };
+
   return (
     <div className={classes.root}>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        indicatorColor="primary"
-        textColor="primary"
-      >
-        <Tab label="Item One">
-          Hello Tab One
-          </Tab>
-        <Tab label="Item Two" />
-        <Tab label="Item Three" />
-      </Tabs>
+      <div>
+        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+          <Tab label="Music" {...a11yProps(0)} />
+          <Tab label="Food & Drinks" {...a11yProps(1)} />
+          <Tab label="Free" {...a11yProps(2)} />
+        </Tabs>
+      </div>
       <TabPanel value={value} index={0}>
-        Content
+        Item One
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
