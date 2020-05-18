@@ -63,7 +63,7 @@ const CategoriesTabs = () => {
   const dispatch = useDispatch()
   const events = useSelector(state => state.events.events)
 
-  
+  console.log(events)
 
   useEffect(()=>{
       dispatch(fetchEvents())
@@ -98,7 +98,7 @@ const CategoriesTabs = () => {
       </TabPanel>
       <TabPanel value={value} index={5}>
         <Grid container spacing={2}>
-          {events.map((event, index) => (
+          {!!events && events.map((event, index) => (
              <Grid item lg={3} key={index}>
                <EventCard {...event} />
              </Grid>
