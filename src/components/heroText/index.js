@@ -1,17 +1,12 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper'
-import image from '../../media/events_home.jpg'
 
 
-const HeroImage = () => {
+const HeroText = () => {
     return (
-        <div className="hero-image">
-            <Paper elevation={3} >
-                <img src={image} alt="Home Events" />
-            </Paper>
-
+        <div className="hero-text">
+            <h1>Browse Events</h1>
         </div>
     )
 }
 
-export default HeroImage;
+export default HeroText;

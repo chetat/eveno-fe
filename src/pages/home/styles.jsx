@@ -1,39 +1,42 @@
 import { makeStyles } from '@material-ui/core/styles';
-import image from '../../media/events_home.jpg';
 
 
 const styles = makeStyles((theme) => ({
- gridContainer: {
-     display: 'flex',
+ heroGridContainer: {
      margin: '5% 0',
      alignItems: 'center'
  },
- heroTextSection: {
-    position: 'relative',
-    padding: '20%',
-    backgroundColor: '#fff5f8',
-    marginRight: '5%',
-    display: 'flex',
-    alignSelf: 'center',
-    marginTop:'5%',
-    border: 'aqua',
-    borderRadius: '6px'
- },
  heroImageSection: {
     position: 'relative',
-    [theme.breakpoints.down('sm')]: {
-        backgroundImage: `url(${image})`,
-        backgroundColor: '#FEE'
-      }
 },
 heroTitle: {
-    fontWeight: '700',
+    color: '#f8f',
+    display: 'flex',
     fontSize: '3rem',
-    fontFamily: 'Rubik',
-    position: 'absolute',
-    left:'-10%'
+    [theme.breakpoints.down('sm')]: {
+        fontSize:'2.5rem'
+      },
+    justifyContent: 'center'
+},
+heroBtn: {
+ background: 'linear-gradient(45deg, #3f51b5 30%, #Ff51b5 90%)',
+ borderRadius: 6,
+ borderColor: '#F24578',
+ color: 'white',
+},
+subhero: {
+    fontSize: '2.5rem'
+},
+subheroSpan: {
+    color: '#F8F'
+},
+heroImage: {
+    width: '100%'
+},
+heroText:{
+    textAlign: 'center'
 }
-}));
+})
+);
 
 export default styles;
-

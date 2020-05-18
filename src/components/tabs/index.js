@@ -5,6 +5,13 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import EventCard from '../../components/EventCard';
+import { Grid } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchEvents } from '../../actions/eventsAction';
+
+
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -41,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
   },
+  tabLabel: {
+    fontSize: '0.75rem'
+  },
 }));
 
 const CategoriesTabs = () => {
@@ -50,14 +60,25 @@ const CategoriesTabs = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const dispatch = useDispatch()
+  const events = useSelector(state => state.events.events)
+
+  
+
+  useEffect(()=>{
+      dispatch(fetchEvents())
+  },[])
 
   return (
     <div className={classes.root}>
-      <div>
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="Music" {...a11yProps(0)} />
-          <Tab label="Food & Drinks" {...a11yProps(1)} />
-          <Tab label="Free" {...a11yProps(2)} />
+      <div className={classes.tabTitles}>
+        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" variant="scrollable" >
+          <Tab label={<span className={classes.tabLabel}>All</span>} {...a11yProps(0)}/>
+          <Tab label="Food &amp; Drinks" {...a11yProps(1)} />
+          <Tab label="Music" {...a11yProps(2)} />
+          <Tab label="Software Development" {...a11yProps(3)} />
+          <Tab label="Free" {...a11yProps(4)} />
+          <Tab label="Charity &amp; Causes" {...a11yProps(4)} />
         </Tabs>
       </div>
       <TabPanel value={value} index={0}>
@@ -68,6 +89,21 @@ const CategoriesTabs = () => {
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        Item Four
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+        Item Five
+      </TabPanel>
+      <TabPanel value={value} index={5}>
+        <Grid container spacing={2}>
+          {events.map((event, index) => (
+             <Grid item lg={3} key={index}>
+               <EventCard {...event} />
+             </Grid>
+          ))}
+        </Grid>
       </TabPanel>
     </div>
   );
