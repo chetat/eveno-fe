@@ -98,11 +98,11 @@ const CategoriesTabs = () => {
       </TabPanel>
       <TabPanel value={value} index={5}>
         <Grid container spacing={2}>
-          {!!events && events.map((event, index) => (
+          {events && events.length > 0 ? events.map((event, index) => (
              <Grid item lg={3} key={index}>
                <EventCard {...event} />
              </Grid>
-          ))}
+          )) : <h1>Nothing{console.log("Nothing")}</h1> }
         </Grid>
       </TabPanel>
     </div>
