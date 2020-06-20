@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
-import Navbar from './containers/Navbar'
 
 import { Router } from 'react-router-dom';
-
-import { createBrowserHistory } from 'history';
+import { ConnectedRouter } from 'connected-react-router'
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './store';
+import { store, persistor, getHistory } from './store';
 // Routes
 import Routes from './Routes';
-const browserHistory = createBrowserHistory();
 
+const history = getHistory()
 export default class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <Router history={browserHistory}>
-                    <PersistGate persistor={persistor}>
-                        <Routes />
-                    </PersistGate>
-                </Router>
+                <ConnectedRouter history={history}> { /* place ConnectedRouter under Provider */}
+                    <Router history={history}>
+                        <PersistGate persistor={persistor}>
+                            <Routes />
+                        </PersistGate>
+                    </Router>
+                </ConnectedRouter>
+
             </Provider>
         );
     }

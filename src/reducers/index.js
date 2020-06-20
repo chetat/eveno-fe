@@ -1,10 +1,16 @@
 import {combineReducers} from 'redux';
 import eventsReducer from './eventsReducer';
-import eventsTypeReducer from './eventsTypeReducer'
+import eventsTypeReducer from './eventsTypeReducer';
+import authReducer from './authReducer'
+import { connectRouter } from 'connected-react-router'
 
 
 
-export default combineReducers({
+const combineRed = (history) => combineReducers({
+  router: connectRouter(history),
   events: eventsReducer,
-  eventsType: eventsTypeReducer
-})
+  eventsType: eventsTypeReducer,
+  auth: authReducer
+});
+
+export default combineRed;

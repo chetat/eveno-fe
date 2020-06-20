@@ -12,9 +12,12 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import styles from './styles';
-import * as EmailValidator from 'email-validator';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../../actions/authActions';
 
 
 
@@ -43,42 +46,22 @@ export default function SignInSide() {
 
   // set a state variable which can be used to disable the save/submit button
   // we set it to true so that the form is disabled on first render
-  const [disabled, setDisabled] = useState(null)
 
   //Initial values for email and password
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  //Errors Message State
-  const [formError, setFormError] = useState('');
-
 
   //Snackbar States
   const [snackOpen, setSnackOpen] = useState(false);
+  const [loading, setLoading] = useState(false)
 
-  //Fields validation
-  useEffect(() => {
-    if (initRender.current) {
-      initRender.current = false;
-      return;
-    }
-    // here we can disable/enable the save button by wrapping the setState function
-    // in a call to the validation function which returns true/false
-    setDisabled(formInvalid())
-
+  const dispatch = useDispatch()
+  const errors = useSelector((state ) => {
+    console.log("Called 1st")
+    return state.auth.loginError
   })
-
-  //Validate form fields
-  const formInvalid = () => {
-    if (email === "" || !EmailValidator.validate(email)) {
-      setFormError("Invalid Email")
-      return true;
-    }else if (password === "" || password.length < 6) {
-      setFormError("Password too short. Requires more than 6 characters")
-      return true;
-    }
-    return false;
-  }
+  const isLoading = useSelector(state => state.auth.isLoading)
 
 //Handle error messages 
 const handleClose = (event, reason) => {
@@ -89,7 +72,15 @@ const handleClose = (event, reason) => {
 };
 
 const handleLogin = (e) => {
-  e.preventDefault()
+  e.preventDefault();
+  dispatch(loginUser(email, password));
+  console.log(isLoading)
+
+  if(errors){
+    setSnackOpen(true);
+    setLoading(false)
+  }
+
 }
 
 const classes = styles();
@@ -97,6 +88,9 @@ const classes = styles();
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
+      <Backdrop className={classes.backdrop} open={loading} onClick={handleClose}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
@@ -106,13 +100,13 @@ const classes = styles();
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          {formError && (
+          {errors && (
           <Snackbar open={snackOpen}
            autoHideDuration={4000}
            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
            onClose={handleClose}>
             <Alert onClose={handleClose} severity="error">
-              {formError}
+              {errors}
             </Alert>
           </Snackbar>)}
         
@@ -150,8 +144,6 @@ const classes = styles();
               fullWidth
               variant="contained"
               color="primary"
-              disabled={disabled}
-
               className={classes.submit}
             >
               Sign In

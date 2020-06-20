@@ -1,5 +1,7 @@
 export const BASE_URL = "https://eveno.herokuapp.com/api/v1"
 export const USER_LOADING = 'USER_LOADING';
+export const LOGIN_LOADING = 'LOGIN_LOADING';
+
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
@@ -12,7 +14,6 @@ export const UPDATE_USER = 'UPDATE_USER';
 export const USERS_LOADING = 'USERS_LOADING';
 export const DELETE_USER = 'DELETE_USER';
 
-export const USER_LOADED = 'USER_LOADED';
 export const USER_REGISTERED = 'USER_REGISTERED';
 
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
