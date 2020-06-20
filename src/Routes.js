@@ -3,6 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 import Home from './pages/home';
 import Profile from './pages/profile'
 import EventDetails from './pages/eventDetails';
+import Login from './pages/auth/Login'
 
 export default class Routes extends Component{
 
@@ -11,7 +12,8 @@ export default class Routes extends Component{
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/profile" component={Profile} />
-                <Route exact path="/eventdetails" component={EventDetails} />
+                <Route exact path="/events/detail/:eventId" component={EventDetails} />
+                <Route exact path="/auth/login" component={Login}/>
             </Switch>
         );
     }

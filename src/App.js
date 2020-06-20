@@ -17,7 +17,6 @@ export default class App extends Component {
             <Provider store={store}>
                 <Router history={browserHistory}>
                     <PersistGate persistor={persistor}>
-                        <Navbar />
                         <Routes />
                     </PersistGate>
                 </Router>

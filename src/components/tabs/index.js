@@ -10,7 +10,8 @@ import { Grid } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchEvents } from '../../actions/eventsAction';
-
+import Skeleton from '@material-ui/lab/Skeleton';
+import { fetchEventsTypes } from '../../actions/eventsTypes';
 
 
 const TabPanel = (props) => {
@@ -62,33 +63,50 @@ const CategoriesTabs = () => {
   };
   const dispatch = useDispatch()
   const events = useSelector(state => state.events.events)
-
-  console.log(events)
+  const eventTypes = useSelector(state => state.eventsType.eventsType)
+  console.log(eventTypes)
 
   useEffect(()=>{
       dispatch(fetchEvents())
   },[])
 
+  useEffect(() => {
+    dispatch(fetchEventsTypes())
+  }, [])
   return (
     <div className={classes.root}>
       <div className={classes.tabTitles}>
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" variant="scrollable" >
+        <Tabs value={value} onChange={handleChange} aria-label="Events Tabs" variant="scrollable" >
+
           <Tab label={<span className={classes.tabLabel}>All</span>} {...a11yProps(0)}/>
-          <Tab label="Food &amp; Drinks" {...a11yProps(1)} />
-          <Tab label="Music" {...a11yProps(2)} />
-          <Tab label="Software Development" {...a11yProps(3)} />
-          <Tab label="Free" {...a11yProps(4)} />
-          <Tab label="Charity &amp; Causes" {...a11yProps(4)} />
+          
+          {eventTypes && eventTypes.length > 0 ? eventTypes.map((type, index) => {
+            return <Tab label={type.name} {...a11yProps(index)} key={index}/>
+          }) : null }
+          
         </Tabs>
       </div>
       <TabPanel value={value} index={0}>
-        Item One
+        <Grid container spacing={2}>
+            {events && events.length > 0 ? events.map((event, index) => (
+              <Grid item lg={3} key={index}>
+                    <EventCard {...event} />
+              </Grid>
+            )) :  <Skeleton variant="rect" width={210} height={118} /> }
+          </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+      <Grid container spacing={2}>
+            {events && events.length > 0 ? events.map((event, index) => (
+              <Grid item lg={3} key={index}>
+                    <EventCard {...event} />
+              </Grid>
+            )) :  <Skeleton variant="rect" width={210} height={118} /> }
+          </Grid>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
+        {value}
       </TabPanel>
       <TabPanel value={value} index={3}>
         Item Four
@@ -100,9 +118,10 @@ const CategoriesTabs = () => {
         <Grid container spacing={2}>
           {events && events.length > 0 ? events.map((event, index) => (
              <Grid item lg={3} key={index}>
-               <EventCard {...event} />
+               
+                  <EventCard {...event} />
              </Grid>
-          )) : <h1>Nothing{console.log("Nothing")}</h1> }
+          )) :  <Skeleton variant="rect" width={210} height={118} /> }
         </Grid>
       </TabPanel>
     </div>

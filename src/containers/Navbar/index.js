@@ -72,7 +72,7 @@ const PrimarySearchAppBar = () => {
             <MenuItem>
                 <AccountCircle />
                 <Typography noWrap>
-                    <Link to="/">
+                    <Link to="/auth/login">
                         Sign In
                         </Link>
                 </Typography>
@@ -106,7 +106,7 @@ const PrimarySearchAppBar = () => {
                                 </Link>
                     </div>
                     <div className={classes.sectionDesktop}>
-                            <Link to="/profile" className={classes.link}>
+                            <Link to="/auth/login" className={classes.link}>
                                 Sign In
                                 </Link>
                     </div>

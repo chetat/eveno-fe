@@ -5,7 +5,7 @@ import styles from './styles';
 import Container from '@material-ui/core/Container';
 import image from '../../media/events_home.jpg'
 import CategoriesTabs from '../../components/tabs';
-
+import Navbar from '../../containers/Navbar'
 
 const Home = () => {
  
@@ -13,6 +13,8 @@ const Home = () => {
     const classes = styles()
     return (
         <React.Fragment>
+           <Navbar />
+
             <Container>
                 <Grid container spacing={2} className={classes.heroGridContainer}>
                     <Grid item xs={12} md={6} className={classes.heroImageSection}>
