@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_LOADING, AUTH_ERROR} from '../../actions/types';
+import { LOGIN_SUCCESS, LOGIN_LOADING, AUTH_ERROR, USER_REGISTERED} from '../../actions/types';
 
 export const initialState = {
     isLoading: false,
@@ -9,18 +9,29 @@ export const initialState = {
 const authReducer = (state=initialState, action) => {
     switch(action.type){
         case LOGIN_LOADING:
-            return {
-                ...state, isLoading: true
-            }
+            return Object.assign({}, state, {
+                loginError: null,
+                token: null,
+                isLoading: true,
+            });
         case LOGIN_SUCCESS:
-            return  {
-                ...state, token:action.payload
-              }
+            return Object.assign({}, state, {
+                loginError: null,
+                token:action.payload,
+                isLoading: false,
+            });
+        case USER_REGISTERED:
+            return Object.assign({}, state, {
+                loginError: null,
+                token:action.payload,
+                isLoading: false,
+            });
         case AUTH_ERROR:
-            return  {
-                ...state, loginError: action.payload.error
-            }
-        
+            return Object.assign({}, state, {
+                loginError: action.payload.error,
+                token:null,
+                isLoading: false,
+            });
         default:
             return state;
     }

@@ -18,6 +18,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../../actions/authActions';
+import IconButton from '@material-ui/core/IconButton';
 
 
 
@@ -53,7 +54,7 @@ export default function SignInSide() {
 
 
   //Snackbar States
-  const [snackOpen, setSnackOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false)
 
   const dispatch = useDispatch()
@@ -65,20 +66,14 @@ export default function SignInSide() {
 
 //Handle error messages 
 const handleClose = (event, reason) => {
-  if (reason === 'clickaway') {
-    return;
-  }
-  setSnackOpen(false);
+  setOpen(false);
 };
 
 const handleLogin = (e) => {
   e.preventDefault();
   dispatch(loginUser(email, password));
-  console.log(isLoading)
-
   if(errors){
-    setSnackOpen(true);
-    setLoading(false)
+    setLoading(isLoading)
   }
 
 }
@@ -100,17 +95,12 @@ const classes = styles();
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          {errors && (
-          <Snackbar open={snackOpen}
-           autoHideDuration={4000}
-           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-           onClose={handleClose}>
-            <Alert onClose={handleClose} severity="error">
-              {errors}
-            </Alert>
-          </Snackbar>)}
-        
+
           <form className={classes.form} noValidate onSubmit={handleLogin}>
+              {errors && (
+                <Alert severity="error">
+                  {errors}
+                </Alert>)}
             <TextField
               variant="outlined"
               margin="normal"
@@ -155,7 +145,7 @@ const classes = styles();
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

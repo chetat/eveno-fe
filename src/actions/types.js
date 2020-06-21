@@ -4,7 +4,6 @@ export const LOGIN_LOADING = 'LOGIN_LOADING';
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
-export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const LOGIN_USER = 'LOGIN_USER';
 export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
 
@@ -17,7 +16,6 @@ export const DELETE_USER = 'DELETE_USER';
 export const USER_REGISTERED = 'USER_REGISTERED';
 
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
-export const GET_ERRORS = 'GET_ERRORS';
 export const AUTH_ERROR = 'AUTH_ERROR';
 
 export const FETCH_ERROR = 'FETCH_ERROR';

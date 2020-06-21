@@ -18,16 +18,19 @@
     "connected-react-router": "^6.8.0",
     "email-validator": "^2.0.4",
     "express": "^4.17.1",
+    "material-ui-phone-number": "^2.2.6",
     "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-phone-input-2": "^2.13.5",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "validator": "^13.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
