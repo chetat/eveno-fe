@@ -1,10 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
@@ -12,10 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import styles from './styles';
-import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import Backdrop from '@material-ui/core/Backdrop';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { useDispatch, useSelector } from 'react-redux';
 import { RegisterUser } from '../../../actions/authActions';
 import 'react-phone-input-2/lib/material.css';
@@ -48,27 +43,15 @@ export default function SignInSide() {
   const [name, setName] = useState('');
 
 
-
-  //Snackbar States
-  const [loading, setLoading] = useState(false)
-
   const dispatch = useDispatch()
   const errors = useSelector((state ) => {
-    console.log("Called 1st")
     return state.auth.loginError
   })
-  const isLoading = useSelector(state => state.auth.isLoading)
 
 
 const handleRegister = (e) => {
   e.preventDefault();
   dispatch(RegisterUser(name, email, password));
-  console.log(isLoading)
-
-  if(errors){
-    setLoading(false)
-  }
-
 }
 
 const classes = styles();

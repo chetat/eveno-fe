@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,13 +12,9 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import styles from './styles';
-import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import Backdrop from '@material-ui/core/Backdrop';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../../actions/authActions';
-import IconButton from '@material-ui/core/IconButton';
 
 
 
@@ -42,8 +38,6 @@ function Copyright() {
 
 
 export default function SignInSide() {
-  // we use the help of useRef to test if it's the first render
-  const initRender = useRef(true);
 
   // set a state variable which can be used to disable the save/submit button
   // we set it to true so that the form is disabled on first render
@@ -52,30 +46,14 @@ export default function SignInSide() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
-  //Snackbar States
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false)
-
   const dispatch = useDispatch()
   const errors = useSelector((state ) => {
-    console.log("Called 1st")
     return state.auth.loginError
   })
-  const isLoading = useSelector(state => state.auth.isLoading)
-
-//Handle error messages 
-const handleClose = (event, reason) => {
-  setOpen(false);
-};
 
 const handleLogin = (e) => {
   e.preventDefault();
   dispatch(loginUser(email, password));
-  if(errors){
-    setLoading(isLoading)
-  }
-
 }
 
 const classes = styles();
@@ -83,9 +61,6 @@ const classes = styles();
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Backdrop className={classes.backdrop} open={loading} onClick={handleClose}>
-        <CircularProgress color="inherit" />
-      </Backdrop>
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
