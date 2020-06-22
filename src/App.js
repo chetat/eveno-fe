@@ -4,7 +4,7 @@ import { Router } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router'
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor, getHistory } from './store';
+import { store, persistor, getHistory } from './Store';
 // Routes
 import Routes from './Routes';
 

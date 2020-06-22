@@ -16,7 +16,10 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../../Actions/authActions';
 
-
+import {
+  useHistory,
+  useLocation
+} from "react-router-dom";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -45,15 +48,20 @@ export default function SignInSide() {
   //Initial values for email and password
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const location = useLocation()
 
   const dispatch = useDispatch()
+
+
+  
   const errors = useSelector((state ) => {
     return state.auth.loginError
   })
 
 const handleLogin = (e) => {
   e.preventDefault();
-  dispatch(loginUser(email, password));
+  let { from } = location.state || { from: { pathname: "/" } };
+  dispatch(loginUser(email, password, from));
 }
 
 const classes = styles();
@@ -120,7 +128,7 @@ const classes = styles();
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="auth/register" variant="body2">
+                <Link href="/auth/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

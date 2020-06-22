@@ -1,4 +1,4 @@
-import {FETCH_ERROR, FETCH_EVENTS_TYPE} from '../../actions/types';
+import {FETCH_ERROR, FETCH_EVENTS_TYPE} from '../../Actions/types';
 
 export const initialState = {
     isLoading: false,

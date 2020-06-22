@@ -3,7 +3,10 @@ import { BASE_URL, LOGIN_SUCCESS, AUTH_ERROR, LOGIN_LOADING, USER_REGISTERED } f
 import * as EmailValidator from 'email-validator';
 import { push } from 'connected-react-router';
 
-export const loginUser = (email, password) => async dispatch => {
+
+export const loginUser = (email, password, path) => {
+    return async dispatch => {
+
     //Validate Email and password
     if (email.length > 0 && EmailValidator.validate(email) && password.length > 0) {
         const options = {
@@ -16,7 +19,8 @@ export const loginUser = (email, password) => async dispatch => {
             .then(res => {
                 if (res.data.data){
                     dispatch({type: LOGIN_SUCCESS, payload: res.data.data.access_token})
-                    dispatch(push('/'))
+                    localStorage.setItem("isAuth", true)
+                    dispatch(push(path))
                 }else {
                     dispatch({
                         type: AUTH_ERROR, payload: { 
@@ -37,11 +41,12 @@ export const loginUser = (email, password) => async dispatch => {
         dispatch({
             type: AUTH_ERROR, payload: { error: err, status: 400 }
         })        
+    
     }
-}
+}}
 
 
-export const RegisterUser = (name, email, password) => async dispatch => {
+export const RegisterUser = (name, email, password, path) => async dispatch => {
     //Validate Input Fields
     if (email.length > 0 && EmailValidator.validate(email) && password.length > 0 && name.length > 0) {
         const options = {
@@ -58,7 +63,7 @@ export const RegisterUser = (name, email, password) => async dispatch => {
             .then(res => {
                 if (res.data.data){
                     dispatch({type: USER_REGISTERED, payload: res.data.data.access_token})
-                    dispatch(push('/'))
+                    dispatch(push(path))
                 }else {
                     dispatch({
                         type: AUTH_ERROR, payload: { 

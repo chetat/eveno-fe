@@ -13,8 +13,10 @@ import styles from './styles';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { RegisterUser } from '../../../Actions/authActions';
-import 'react-phone-input-2/lib/material.css';
-
+import {
+  useHistory,
+  useLocation
+} from "react-router-dom";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -35,12 +37,13 @@ function Copyright() {
 
 
 
-export default function SignInSide() {
+export default function Register() {
 
   //Initial values for email and password
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const location = useLocation()
 
 
   const dispatch = useDispatch()
@@ -51,7 +54,8 @@ export default function SignInSide() {
 
 const handleRegister = (e) => {
   e.preventDefault();
-  dispatch(RegisterUser(name, email, password));
+  let { from } = location.state || { from: { pathname: "/" } };
+  dispatch(RegisterUser(name, email, password, from));
 }
 
 const classes = styles();

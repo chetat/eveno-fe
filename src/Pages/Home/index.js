@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import styles from './styles';
 import Container from '@material-ui/core/Container';
-import image from '../../media/events_home.jpg'
+import image from '../../Media/events_home.jpg'
 import CategoriesTabs from '../../Components/tabs';
 import Navbar from '../../Containers/Navbar'
 
