@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import styles from './styles';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useDispatch, useSelector } from 'react-redux';
-import { RegisterUser } from '../../../actions/authActions';
+import { RegisterUser } from '../../../Actions/authActions';
 import 'react-phone-input-2/lib/material.css';
 
 

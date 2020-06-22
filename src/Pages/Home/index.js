@@ -4,8 +4,8 @@ import Button from '@material-ui/core/Button';
 import styles from './styles';
 import Container from '@material-ui/core/Container';
 import image from '../../media/events_home.jpg'
-import CategoriesTabs from '../../components/tabs';
-import Navbar from '../../containers/Navbar'
+import CategoriesTabs from '../../Components/tabs';
+import Navbar from '../../Containers/Navbar'
 
 const Home = () => {
  

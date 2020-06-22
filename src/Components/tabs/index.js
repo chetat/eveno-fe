@@ -5,13 +5,13 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import EventCard from '../../components/EventCard';
+import EventCard from '../EventCard';
 import { Grid } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchEvents } from '../../actions/eventsAction';
+import { fetchEvents } from '../../Actions/eventsAction';
 import Skeleton from '@material-ui/lab/Skeleton';
-import { fetchEventsTypes } from '../../actions/eventsTypes';
+import { fetchEventsTypes } from '../../Actions/eventsTypes';
 
 
 const TabPanel = (props) => {

@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import styles from './styles';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../../actions/authActions';
+import { loginUser } from '../../../Actions/authActions';
 
 
 
@@ -120,7 +120,7 @@ const classes = styles();
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/register" variant="body2">
+                <Link href="auth/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
