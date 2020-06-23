@@ -64,8 +64,16 @@ const PrimarySearchAppBar = () => {
             <MenuItem>
                 <AddIcon />
                 <Typography noWrap>
-                    <Link to="/profile">
+                    <Link to="/events/new">
                         Create Event
+                        </Link>
+                </Typography>
+            </MenuItem>
+            <MenuItem>
+                <AccountCircle />
+                <Typography noWrap>
+                    <Link to="/events/all">
+                        Browse Events
                         </Link>
                 </Typography>
             </MenuItem>
@@ -101,7 +109,12 @@ const PrimarySearchAppBar = () => {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                            <Link to="/profile" className={classes.link}>
+                            <Link to="/events/all" className={classes.link}>
+                                Browse Events
+                                </Link>
+                    </div>
+                    <div className={classes.sectionDesktop}>
+                            <Link to="/manage/events/new" className={classes.link}>
                                 Create Event
                                 </Link>
                     </div>

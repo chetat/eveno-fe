@@ -14,13 +14,10 @@ import Forgot from "./Pages/Auth/Password/Forgot";
 import Reset from "./Pages/Auth/Password/Reset";
 import NotFound from "./Pages/NotFound"
 import AuthRoute from "./Utils/AuthRoute";
-import { useSelector } from 'react-redux';
 
 
 
  const Routes = () => {
-    const { isAuthenticated } = useSelector(state => state.auth)
-    console.log(isAuthenticated)
         return(
             <Switch>
                 <Route exact path="/" component={Home} />
