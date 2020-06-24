@@ -17,7 +17,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../../Actions/authActions';
 
 import {
-  useHistory,
   useLocation
 } from "react-router-dom";
 
