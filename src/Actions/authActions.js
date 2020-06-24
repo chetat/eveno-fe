@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL, LOGIN_SUCCESS, AUTH_ERROR, LOGIN_LOADING, USER_REGISTERED } from './types';
+import { BASE_URL, LOGIN_SUCCESS, AUTH_ERROR, LOGIN_LOADING, USER_REGISTERED, SIGN_OUT_SUCCESS } from './types';
 import * as EmailValidator from 'email-validator';
 import { push } from 'connected-react-router';
 
@@ -85,4 +85,10 @@ export const RegisterUser = (name, email, password, path) => async dispatch => {
             type: AUTH_ERROR, payload: { error: err, status: 400 }
         })        
     }
+}
+
+export const logout = () => dispatch => {
+    localStorage.removeItem("isAuth")
+    dispatch({type: SIGN_OUT_SUCCESS})
+    dispatch(push('/auth/login'))
 }

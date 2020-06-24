@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_LOADING, AUTH_ERROR, USER_REGISTERED} from '../../Actions/types';
+import { LOGIN_SUCCESS, LOGIN_LOADING, AUTH_ERROR, USER_REGISTERED, SIGN_OUT_SUCCESS} from '../../Actions/types';
 
 export const initialState = {
     isLoading: false,
@@ -33,6 +33,13 @@ const authReducer = (state=initialState, action) => {
         case AUTH_ERROR:
             return Object.assign({}, state, {
                 loginError: action.payload.error,
+                token:null,
+                isLoading: false,
+                isAuthenticated: false
+            });
+        case SIGN_OUT_SUCCESS:
+            return Object.assign({}, state, {
+                loginError: null,
                 token:null,
                 isLoading: false,
                 isAuthenticated: false
