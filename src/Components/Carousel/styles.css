@@ -1,4 +1,7 @@
-.caro {
-    width: 100%;
-    height: 40%;
+
+
+@media (min-width: 768px) { 
+    .caro {
+        height: 60vh;
+    }
 }

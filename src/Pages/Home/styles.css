@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+.section-title {
+margin-top: 2rem;
+font-family: 'Lato', sans-serif;
+}
+
+@media (min-width: 768px) { 
+    .caro {
+        height: 60vh;
+    }
+    .section-title {
+        margin: 2.5rem 0;
+        font-family: 'Lato', sans-serif;
+        }
+}

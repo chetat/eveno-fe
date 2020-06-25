@@ -16,6 +16,7 @@ const CarouselHero = () => {
     <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item className="caro">
         <img
+        className="d-block w-100"
           src={Image}
           alt="First slide"
         />
@@ -26,6 +27,7 @@ const CarouselHero = () => {
       </Carousel.Item>
       <Carousel.Item className="caro">
         <img
+        className="d-block w-100"
           src={Image}
           alt="Second slide"
         />
@@ -37,7 +39,7 @@ const CarouselHero = () => {
       </Carousel.Item>
       <Carousel.Item className="caro">
         <img
-          className="d-block"
+          className="d-block w-100"
           src={Image}
           alt="Third slide"
         />
