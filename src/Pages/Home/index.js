@@ -1,7 +1,8 @@
 import React from 'react';
 import CarouselHero from '../../Components/Carousel';
 import { Container } from "react-bootstrap";
-import EventCard from '../../Components/EventCard'
+import EventCard from '../../Components/EventCard';
+import CategoryCard from '../../Components/CategoryCard'
 import AppBar from '../../Components/Navbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -32,10 +33,11 @@ const Home = () => {
 
                 <div className="card-deck">
                     {events && events.length > 0 ? events.map((event, index) => (
-                        <EventCard {...event} />
+                        <EventCard {...event} key={index}/>
                     )) : <Skeleton variant="rect" width={210} height={118} />}
                 </div>
                 <h3 className="section-title">Events Categories </h3>
+                <CategoryCard />
             </Container>
         </Container>
 

@@ -3,7 +3,6 @@ import { Container, Card } from "react-bootstrap";
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './styles.css';
-import Skeleton from '@material-ui/lab/Skeleton';
 
 
 const EventCard = (props) => {
