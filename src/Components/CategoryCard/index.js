@@ -20,16 +20,26 @@ const CategoryCard = (props) => {
     return (
         <div className="card-deck">
             {eventTypes.length > 0 ? eventTypes.map((eType, index) => (
+            
                 <Card className="bg-dark text-white col-lg-4" key={index}>
+                    <Link to={"/categories/" + eType.id + "/" + eType.name}>
                     <Card.Img src={eType.image} alt="Card image" />
                     <Card.ImgOverlay>
-                        <Card.Title>{eType.name}</Card.Title>
+                        <Card.Title className="stretched-link">{eType.name}</Card.Title>
                         <Card.Text>
                             {eType.description}
                         </Card.Text>
                     </Card.ImgOverlay>
+                    </Link>
+                   
                 </Card>
-            )) : <Skeleton variant="rect" width={210} height={118} />}
+            )) : 
+            <div>
+                    <Skeleton variant="text" />
+                    <Skeleton variant="circle" width={40} height={40} />
+                    <Skeleton variant="rect" width={300} height={218} />
+                  </div>
+            }
 
         </div>
 

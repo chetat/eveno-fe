@@ -6,21 +6,23 @@ import './styles.css';
 
 
 const EventCard = (props) => {
-  const { title, image_url, start_date, id , description } = props;
+  const { title, image_url, start_date, id, description } = props;
   console.log(props)
   return (
     <Card>
-    <Card.Img variant="top" src={image_url} />
-    <Card.Body>
-      <Card.Title className="event-title">{title}</Card.Title>
-      <Card.Text>
-        {description}
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted">{start_date}</small>
-    </Card.Footer>
-  </Card>
+      <Link to={"/events/detail/" + id + "/" + title} style={{"color": "inherit", "textDecoration": "none"}}>
+        <Card.Img variant="top" src={image_url} />
+        <Card.Body>
+          <Card.Title className="event-title">{title}</Card.Title>
+          <Card.Text>
+            {description}
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted">{start_date}</small>
+        </Card.Footer>
+      </Link>
+    </Card>
   );
 }
 

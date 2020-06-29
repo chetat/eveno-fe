@@ -23,7 +23,7 @@ import AuthRoute from "./Utils/AuthRoute";
                 <Route exact path="/" component={Home} />
                 <AuthRoute exact path="/profile" component={Profile}  />
                 <Route exact path="/events/all" component={AllEvents} />
-                <Route exact path="/events/detail/:eventId" component={EventDetails} />
+                <Route exact path="/events/detail/:eventId/:eventName" component={EventDetails} />
                 <Route exact path="/auth/register" component={Register} />
                 <Route exact path="/auth/login" component={Login}/>
                 <Route exact path="/auth/password/reset" component={Reset}/>
