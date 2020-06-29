@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import { Carousel } from 'react-bootstrap';
-import Image from '../../Media/0.jpg';
 import Image4 from '../../Media/4.jpg';
 import Image1 from '../../Media/1.jpg';
 import Image2 from '../../Media/2.jpg';

@@ -12,6 +12,7 @@ import { fetchEventsTypes } from '../../Actions/eventsTypes';
 import { Button } from 'react-bootstrap';
 
 import './styles.css'
+import Footer from '../../Containers/Footer';
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -26,36 +27,40 @@ const Home = () => {
     useEffect(() => {
         dispatch(fetchEventsTypes())
     }, [])
+
     return (
-        <Container fluid>
-            <AppBar />
-            <Container>
-                <CarouselHero />
-                <h3 className="section-title">Popular Events Around you </h3>
+        <div>
+            <div>
+                <AppBar />
+                <Container>
+                    <CarouselHero />
+                    <h3 className="section-title">Popular Events Around you </h3>
 
-                <div className="card-deck">
-                    {events && events.length > 0 ? events.map((event, index) => (
-                        <EventCard {...event} key={index} />
-                    )) :
-                        <div>
-                            <Skeleton variant="text" />
-                            <Skeleton variant="circle" width={40} height={40} />
-                            <Skeleton variant="rect" width={210} height={118} />
-                        </div>
-                    }
-                </div>
-                <div className="view-more-btn my-5">
-                    <Button variant="outline-dark" href="/events/all" size="md" block>View More Events</Button>
-                </div>
-                <h3 className="section-title">Events Categories </h3>
-                <CategoryCard />
-                <div className="view-more-btn my-5">
-                    <Button variant="outline-dark" href="/categories/all" size="md" block>View All Categories</Button>
-                </div>
+                    <div className="card-deck">
+                        {events && events.length > 0 ? events.map((event, index) => (
+                            <EventCard {...event} key={index} />
+                        )) :
+                            <div>
+                                <Skeleton variant="text" />
+                                <Skeleton variant="circle" width={40} height={40} />
+                                <Skeleton variant="rect" width={210} height={118} />
+                            </div>
+                        }
+                    </div>
+                    <div className="view-more-btn my-5">
+                        <Button variant="outline-dark" href="/events/all" size="md" block>View More Events</Button>
+                    </div>
+                    <h3 className="section-title">Events Categories </h3>
+                    <CategoryCard />
+                    <div className="view-more-btn my-5">
+                        <Button variant="outline-dark" href="/categories/all" size="md" block>View All Categories</Button>
+                    </div>
 
-            </Container>
-        </Container>
+                </Container>
+            </div>
+            <Footer />
 
+        </div>
     )
 };
 

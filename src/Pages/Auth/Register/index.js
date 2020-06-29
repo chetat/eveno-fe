@@ -14,7 +14,6 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { RegisterUser } from '../../../Actions/authActions';
 import {
-  useHistory,
   useLocation
 } from "react-router-dom";
 

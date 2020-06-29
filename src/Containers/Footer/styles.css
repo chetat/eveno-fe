@@ -1,0 +1,10 @@
+.main-footer{
+    padding: 3rem;
+    background-color: #fff59d;
+}
+
+@media (min-width: 768px) { 
+   .footer-text-center {
+       text-align: center;
+   }
+}
