@@ -14,17 +14,28 @@ const Footer = () => {
                         </p>
                     </Col>
                     <Col lg={6} md={6}>
-                        <h3 className="footer-text-center">Useful Links</h3>
+                        <Row>
                         <Col lg={6}>
+                        <h3 className="footer-text-center">Useful Links</h3>
+
                             <ul>
-                                <li>Events</li>
+                                <li>Browse Events</li>
                                 <li> Categories</li>
                                 <li>Services</li>
                                 <li>Careers</li>
                             </ul>
                         </Col>
                         <Col lg={6}>
+                        <h3 className="footer-text-center">Categories</h3>
+                        <ul>
+                                <li>Arts</li>
+                                <li>Technology</li>
+                                <li>Music</li>
+                                <li>Festivals</li>
+                            </ul>
                         </Col>
+                        </Row>
+                       
                     </Col>
 
                 </Row>

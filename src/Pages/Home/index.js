@@ -17,8 +17,6 @@ import Footer from '../../Containers/Footer';
 const Home = () => {
     const dispatch = useDispatch()
     const events = useSelector(state => state.events.events)
-    const eventTypes = useSelector(state => state.eventsType.eventsType)
-    console.log(eventTypes)
 
     useEffect(() => {
         dispatch(fetchEvents())
@@ -36,8 +34,8 @@ const Home = () => {
                     <CarouselHero />
                     <h3 className="section-title">Popular Events Around you </h3>
 
-                    <div className="card-deck">
-                        {events && events.length > 0 ? events.map((event, index) => (
+                    <div className="card-columns">
+                        {events && events.length > 0 ? events.slice(0, 6).map((event, index) => (
                             <EventCard {...event} key={index} />
                         )) :
                             <div>

@@ -18,7 +18,7 @@ const CategoryCard = (props) => {
 
     return (
         <div className="card-deck">
-            {eventTypes.length > 0 ? eventTypes.map((eType, index) => (
+            {eventTypes.length > 0 ? eventTypes.slice(0, 6).map((eType, index) => (
 
                     <Card className="bg-dark text-white col-lg-4" key={index}>
                                         <Link to={"/categories/" + eType.id + "/" + eType.name} style={{ "textDecoration": "none", "color": "inherit" }}>
