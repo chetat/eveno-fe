@@ -23,11 +23,11 @@ const AppBar = () => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mx-auto">
-                    <Form inline>
-                        <FormControl type="text" placeholder="Search Events"/>
-                    </Form>
+                    
                 </Nav>
                 <Nav>
+                    <Nav.Link className="link-nav btn btn-light" href="/events/all">Browse Events</Nav.Link>
+
                     <Nav.Link className="link-nav" href="/manage/events/new">Create Event</Nav.Link>
                     { isAuthenticated ? <Nav.Link className="link-nav" eventKey={2} onClick={handleLogout} >Logout</Nav.Link> 
                       : <Nav.Link className="link-nav" eventKey={2} href="/auth/login">Login</Nav.Link>
