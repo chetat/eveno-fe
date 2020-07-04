@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormControl, Container, Row, Col } from "react-bootstrap";
+import { Form, FormControl, Container, Row, Col, InputGroup } from "react-bootstrap";
 import AppBar from '../../Components/Navbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -31,14 +31,22 @@ const AllEvents = () => {
                     <Row className="justify-content-center">
                         <Col lg={6} md={6}>
                             <Form.Group>
-
                                 <Form.Control type="text" size="lg" placeholder="Search Events" />
                             </Form.Group>
                         </Col>
                     </Row>
                     <Row>
-                    <h1>Filters</h1>
                         <Col lg={4}>
+                        <h1>Filters</h1>
+
+                        <Row>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                <InputGroup.Radio aria-label="Radio button for following text input" />
+                                </InputGroup.Prepend>
+                                <h5>Free</h5>
+                            </InputGroup>
+                            </Row>
                         </Col>
                         <Col lg={8}>
                         

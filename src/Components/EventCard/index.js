@@ -9,7 +9,7 @@ const EventCard = (props) => {
   const { title, image_url, start_date, id, description } = props;
   console.log(props)
   return (
-    <Card>
+    <Card className="event-card">
       <Link to={"/events/detail/" + id + "/" + title} style={{"color": "inherit", "textDecoration": "none"}}>
         <Card.Img variant="top" src={image_url} />
         <Card.Body>
